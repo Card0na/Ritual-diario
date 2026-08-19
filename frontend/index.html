@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mi lugar favorito</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="contenedor">
+
+    <!-- Bienvenida -->
+    <section class="bienvenida">
+
+        <h1 id="saludo">
+            ❤️Buenos días, amor❤️
+        </h1>
+
+        <p id="subtitulo">
+            Tengo algo para ti...
+        </p>
+
+    </section>
+
+    <!-- Carta -->
+    <section class="carta">
+
+    <div class="sobre">
+
+        <div class="hoja">
+            <p class="mensajeAmor"></p>
+        </div>
+
+        <div class="contenidoSobre">
+
+            <p class="adivinanza">
+                Aquí aparecerá la adivinanza.
+            </p>
+
+            <input
+                type="text"
+                id="respuesta"
+                placeholder="Escribe tu respuesta..."
+            >
+
+            <button id="botonComprobar">
+                Comprobar
+            </button>
+
+        </div>
+
+        <div class="tapa"></div>
+
+        <div class="sello">
+            ❤️
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- Mensajes -->
+    <section class="mensajes">
+
+        <p id="mensajeError"></p>
+
+        <div id="mensajeAmor"></div>
+
+    </section>
+
+    <!-- Cuenta atrás --> 
+    <section class="contador"> 
+
+        <p id="tiempoRestante"></p>
+
+    </section>
+
+</main>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

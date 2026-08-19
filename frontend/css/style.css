@@ -1,0 +1,358 @@
+
+/* ============================
+   CONFIGURACIÓN GENERAL
+============================ */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+
+    --color-fondo:#F8F4F1;
+
+    --color-carta:#FFFDFB;
+
+    --color-principal:#C85C7B;
+
+    --color-secundario:#6D6875;
+
+    --color-texto:#444444;
+
+    --color-error:#B23A48;
+}
+
+body {
+    background: var(--color-fondo);
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    color: var(--color-texto);
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 420px;
+
+    text-align: center;
+
+    padding: 30px 0;
+}
+
+
+.bienvenida{
+
+    margin-bottom:40px;
+
+}
+
+#saludo{
+
+    color:var(--color-principal);
+
+    font-size:2.2rem;
+
+    font-weight:750;
+
+}
+
+#subtitulo{
+
+    margin-top:12px;
+
+    color:var(--color-secundario);
+
+    font-size:1.1rem;
+
+}
+
+/* ============================
+        CARTA
+============================ */
+
+.sobre {
+    position: relative;
+
+    width: 100%;
+    height: 330px;
+
+    background: #E6C1AE;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(120, 80, 60, 0.12);
+
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+
+    perspective: 800px;
+}
+
+.sobre::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: #D5AA95;
+
+    clip-path: polygon(
+        0 100%,
+        50% 50%,
+        100% 100%
+    );
+
+    z-index: 2;
+}
+
+.sobre::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    clip-path: polygon(
+        0 0,
+        50% 50%,
+        100% 0
+    );
+
+    z-index: 2;
+}
+
+.adivinanza{
+
+    font-size:1.1rem;
+
+    color:var(--color-texto);
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+}
+
+#respuesta{
+
+    width:100%;
+
+    padding:14px;
+
+    border:2px solid #E8E2DD;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:1rem;
+
+    margin-bottom:20px;
+}
+
+#botonComprobar{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--color-principal);
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+} 
+
+#mensajeError,
+#mensajeAmor,
+#tiempoRestante {
+    display: none;
+}
+
+.mensajes {
+    margin-top: 25px;
+}
+
+.contador {
+    margin-top: 25px;
+}
+
+#respuesta:focus {
+    border-color: var(--color-principal);
+}
+
+#botonComprobar:hover {
+    opacity: .9;
+}
+
+#botonComprobar:active {
+    transform: scale(.98);
+}
+
+.contenidoSobre {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 10px;
+
+    z-index: 5;
+
+    padding: 35px;
+
+    text-align: center;
+}
+
+.tapa {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: #D9AD99;
+
+    clip-path: polygon(
+        0 0,
+        50% 42%,
+        100% 0
+    );
+
+    z-index: 3;
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s ease;
+}
+
+.sobre.abierto .tapa {
+    transform: rotateX(180deg);
+}
+
+.sello {
+    position: absolute;
+
+    top: 28px;
+    left: 50%;
+
+    transform: translate(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: var(--color-principal);
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    z-index: 6;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.15);
+
+    transition:
+        transform .5s ease,
+        opacity .5s ease;
+}
+
+.hoja {
+    position: absolute;
+
+    left: 8%;
+    bottom: -100%;
+
+    width: 84%;
+    height: 90%;
+
+    padding: 30px 25px;
+
+    background: #FFFDFB;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    z-index: 1;
+
+    transition:
+        bottom 1.2s ease;
+}
+
+.sobre.abierto .hoja {
+    bottom: 15%;
+
+    z-index: 7;
+}
+
+.sobre.abierto {
+    overflow: visible;
+}
+
+.sobre.abierto .contenidoSobre {
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity .5s ease;
+}
+
+.sobre.abierto .sello {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0.7);
+
+    pointer-events: none;
+}
+
+.mensajeAmor {
+    color: var(--color-texto);
+
+    font-size: 1.2rem;
+
+    line-height: 1.6;
+}
